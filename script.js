@@ -3,10 +3,10 @@ const slideshowSection = document.querySelector('.slideshow-section');
 
 // Array of background images
 const images = [
-    'images/slideshow/img1.jpg',
-    'images/slideshow/img2.jpg',
-    'images/slideshow/img3.jpg',
-    'images/slideshow/img4.jpg'
+    'images/Slideshow/img1.jpg',
+    'images/Slideshow/img2.jpg',
+    'images/Slideshow/img3.jpg',
+    'images/Slideshow/img4.jpg'
 ];
 
 let lastIndex = -1;
@@ -54,3 +54,4 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         });
     });
 });
+
