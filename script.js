@@ -1,63 +1,35 @@
-// ==== Dynamic Background Slideshow with Fade ====
-const slides = [
+// ==== Background slideshow with crossfade ====
+const slideshowSection = document.querySelector('.slideshow-section');
+
+const images = [
     'images/slideshow/img1.jpg',
     'images/slideshow/img2.jpg',
     'images/slideshow/img3.jpg',
-    'images/slideshow/img4.jpg',
-    'images/slideshow/img5.jpg',
-    'images/slideshow/img6.jpg',
-    'images/slideshow/img7.jpg',
-    'images/slideshow/img8.jpg'
+    'images/slideshow/img4.jpg'
 ];
 
-let current = 0;
+let currentIndex = 0;
 
-const bgCurrent = document.querySelector('.slideshow-bg');
-const bgNext = document.querySelector('.slideshow-bg-next');
+// Create an overlay div for fade effect
+const bgLayer = document.createElement('div');
+bgLayer.classList.add('bg-layer');
+slideshowSection.appendChild(bgLayer);
 
-// Initialize
-bgCurrent.style.backgroundImage = `url('${slides[current]}')`;
-
-function changeSlide() {
-    // Pick next index
-    const nextIndex = (current + 1) % slides.length;
-
-    // Set next background
-    bgNext.style.backgroundImage = `url('${slides[nextIndex]}')`;
-    bgNext.style.opacity = 1;
-
-    // Fade transition
-    setTimeout(() => {
-        bgCurrent.style.backgroundImage = `url('${slides[nextIndex]}')`;
-        bgNext.style.opacity = 0;
-        current = nextIndex;
-    }, 1000); // matches CSS transition
+// Function to change background
+function changeBackground() {
+    bgLayer.style.backgroundImage = `url('${images[currentIndex]}')`;
+    bgLayer.classList.remove('fade-in');
+    void bgLayer.offsetWidth; // re-trigger animation
+    bgLayer.classList.add('fade-in');
+    currentIndex = (currentIndex + 1) % images.length;
 }
 
-// Start slideshow
-setInterval(changeSlide, 5000);
+// Initial call
+changeBackground();
 
+// Change every 5s
+setInterval(changeBackground, 5000);
 
-let lastIndex = -1;
-
-window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-    const docHeight = document.body.scrollHeight - window.innerHeight;
-    const scrollFraction = scrollY / docHeight;
-
-    const index = Math.min(
-        images.length - 1,
-        Math.floor(scrollFraction * images.length)
-    );
-
-    if (index !== lastIndex) {
-        slideshowSection.style.backgroundImage = `linear-gradient(
-            rgba(255, 255, 255, 0.4),
-            rgba(255, 255, 255, 0.4)
-        ), url('${images[index]}')`;
-        lastIndex = index;
-    }
-});
 
 // ==== Return-to-top button ====
 const topBtn = document.getElementById("topBtn");
@@ -74,6 +46,7 @@ topBtn.addEventListener("click", function () {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
+
 // ==== Smooth scroll for anchor links ====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener("click", function (e) {
@@ -83,8 +56,3 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         });
     });
 });
-
-
-
-
-
