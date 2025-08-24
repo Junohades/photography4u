@@ -3,14 +3,14 @@ const slideshowSection = document.querySelector('.slideshow-section');
 
 // Array of background images
 const images = [
-    'images/Slideshow/img1.jpg',
-    'images/Slideshow/img2.jpg',
-    'images/Slideshow/img3.jpg',
-    'images/Slideshow/img4.jpg'
-    'images/Slideshow/img5.jpg'
-    'images/Slideshow/img6.jpg'
-    'images/Slideshow/img7.jpg'
-    'images/Slideshow/img8.jpg'
+    'images/slideshow/img1.jpg',
+    'images/slideshow/img2.jpg',
+    'images/slideshow/img3.jpg',
+    'images/slideshow/img4.jpg'
+    'images/slideshow/img5.jpg'
+    'images/slideshow/img6.jpg'
+    'images/slideshow/img7.jpg'
+    'images/slideshow/img8.jpg'
 ];
 
 let lastIndex = -1;
@@ -58,5 +58,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         });
     });
 });
+
 
 
