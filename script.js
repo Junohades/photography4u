@@ -1,8 +1,5 @@
-// ==== Background slideshow on scroll ====
-const slideshowSection = document.querySelector('.slideshow-section');
-
-// Array of background images
-const images = [
+// ==== Dynamic Background Slideshow with Fade ====
+const slides = [
     'images/slideshow/img1.jpg',
     'images/slideshow/img2.jpg',
     'images/slideshow/img3.jpg',
@@ -12,6 +9,34 @@ const images = [
     'images/slideshow/img7.jpg',
     'images/slideshow/img8.jpg'
 ];
+
+let current = 0;
+
+const bgCurrent = document.querySelector('.slideshow-bg');
+const bgNext = document.querySelector('.slideshow-bg-next');
+
+// Initialize
+bgCurrent.style.backgroundImage = `url('${slides[current]}')`;
+
+function changeSlide() {
+    // Pick next index
+    const nextIndex = (current + 1) % slides.length;
+
+    // Set next background
+    bgNext.style.backgroundImage = `url('${slides[nextIndex]}')`;
+    bgNext.style.opacity = 1;
+
+    // Fade transition
+    setTimeout(() => {
+        bgCurrent.style.backgroundImage = `url('${slides[nextIndex]}')`;
+        bgNext.style.opacity = 0;
+        current = nextIndex;
+    }, 1000); // matches CSS transition
+}
+
+// Start slideshow
+setInterval(changeSlide, 5000);
+
 
 let lastIndex = -1;
 
@@ -58,6 +83,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         });
     });
 });
+
 
 
 
