@@ -7,6 +7,10 @@ const images = [
     'images/Slideshow/img2.jpg',
     'images/Slideshow/img3.jpg',
     'images/Slideshow/img4.jpg'
+    'images/Slideshow/img5.jpg'
+    'images/Slideshow/img6.jpg'
+    'images/Slideshow/img7.jpg'
+    'images/Slideshow/img8.jpg'
 ];
 
 let lastIndex = -1;
@@ -54,4 +58,5 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         });
     });
 });
+
 
