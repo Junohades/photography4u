@@ -42,14 +42,10 @@ body {
 
 /* === Slideshow Background Section === */
 .slideshow-section {
+   position: relative;
     height: 100vh;
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
     transition: background-image 1s ease-in-out;
 }
 
@@ -153,6 +149,7 @@ body {
         font-size: 0.9rem;
     }
 }
+
 
 
 
